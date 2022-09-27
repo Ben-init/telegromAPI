@@ -1,0 +1,15 @@
+{
+  "name": "backend",
+  "version": "0.1.0",
+  "description": "telegram chat",
+  "main": "server.js",
+  "scripts": {
+  },
+  "keywords": [
+    "chat",
+    "telegram",
+    "server"
+  ],
+  "author": "Benjamin Lopez Petroni <lopezpetroni@outlook.com>",
+  "license": "MIT"
+}
