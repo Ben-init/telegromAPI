@@ -1,12 +1,14 @@
 const express = require('express');
 
+const Routes = require('./network/routes');
+
 const app = express();
 const port = 3000;
 
-app.use('/', function (req, res) {
-    res.send('hello world');
-});
+app.use(express.json());
+
+Routes(app);
 
 app.listen(port);
 
-console.log('port:' ,port);
+console.log('port:', port);
