@@ -7,6 +7,7 @@ const messageSchema = new Schema({
     },
     message: String,
     date: Date,
+    modified: Date,
 });
 
 const Model = model('message', messageSchema);
