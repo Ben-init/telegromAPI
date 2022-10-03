@@ -5,17 +5,32 @@ const controller = require('./controller');
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    response.success(req, res, 'lista de mensajes');
+router.get('/', async (req, res) => {
+    try {
+        const messageList = await controller.getAllMessage();
+        response.success(req, res, messageList);
+    } catch (error) {
+        response.error(req, res, error, 500, 'UnexpectedError');
+    }
 })
 
-router.post('/', (req, res) => {
+router.get('/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const messageList = await controller.getMessage(id);
+        response.success(req, res, messageList);
+    } catch (error) {
+        response.error(req, res, error, 500, 'UnexpectedError');
+    }
+})
+
+router.post('/', async (req, res) => {
     try { 
         const { user, message } = req.body
-        const newMessage = controller.addMessage(user, message);
+        const newMessage = await controller.addMessage(user, message);
         response.success(req, res, newMessage, 201);
     } catch (error) {
-        response.error(req, res, error, 500, 'post error');
+        response.error(req, res, error, 500, 'UnexpectedError');
     }
 });
 
