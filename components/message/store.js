@@ -31,13 +31,19 @@ async function addMessage(message) {
     return message;
 }
 
-async function allMessage() {
-    const messages = await Model.find();
+async function allMessage(filter) {
+    const messages = await Model.find(filter);
     return messages;
+}
+
+async function updateMessage(message) {
+    const updatedMessage = await message.save();
+    return updatedMessage;
 }
 
 module.exports = {
     add: addMessage,
     get: getMessage,
     getAll: allMessage,
+    update: updateMessage
 }
