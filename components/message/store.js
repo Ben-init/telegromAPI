@@ -6,8 +6,6 @@ const { config } = require('./../../config');
 const user = config.dbUser; 
 const password = config.dbPassword;
 
-console.log('db connected');
-
 const connectDB = async () => {
     try {
         await mongoose.connect(
@@ -41,9 +39,26 @@ async function updateMessage(message) {
     return updatedMessage;
 }
 
+async function deleteMessage(id) {
+    const deletedMessage = await Model.deleteOne({
+        _id: id,
+    });
+    return deletedMessage;
+}
+
+async function existsMessage(id) {
+    const exists = await Model.exists({
+        _id: id,
+    });
+    console.log('exists', exists);
+    return exists;
+}
+
 module.exports = {
     add: addMessage,
     get: getMessage,
     getAll: allMessage,
-    update: updateMessage
+    update: updateMessage,
+    remove: deleteMessage,
+    exists: existsMessage,
 }
