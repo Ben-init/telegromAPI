@@ -31,7 +31,6 @@ async function existsMessage(id) {
     const exists = await Model.exists({
         _id: id,
     });
-    console.log('exists', exists);
     return exists;
 }
 

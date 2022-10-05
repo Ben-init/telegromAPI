@@ -50,9 +50,7 @@ async function deleteMessage(id) {
     try {
 
         const messageIsTrue = await store.exists(id);
-        console.log(messageIsTrue);
         if (!id || !messageIsTrue) {
-            console.log('hola');
             throw new Error('[Controller] invalid or missing params')
         }
         const deletedMessage = await store.remove(id);
