@@ -4,7 +4,7 @@ async function addMessage(user, chat, message) {
     try {
 
         if (!user || !message || !chat) {
-            throw new Error('[Controller] no user or message');
+            throw new Error('[Controller] no data');
         }
         const fullMessage = {
             user: user,
