@@ -26,10 +26,15 @@ async function updateMessage(message) {
 }
 
 async function deleteMessage(id) {
-    const deletedMessage = await Model.deleteOne({
-        _id: id,
-    });
-    return deletedMessage;
+    try {
+        await Model.findByIdAndDelete(id);
+        return { 
+            id: id ,
+            message: 'Message deleted'
+        };
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 async function existsMessage(id) {
