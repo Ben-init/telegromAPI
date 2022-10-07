@@ -3,7 +3,7 @@ const store = require('./store');
 async function addUser(data) {
 
     if (!data) {
-        throw new Error('[message controller] no user or password');
+        throw new Error('[Controller] no user or password');
     }
     const fullUser = {
         ...data,
