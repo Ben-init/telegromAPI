@@ -12,7 +12,9 @@ async function addChat(chat) {
 
 async function allChat(filter) {
     try {
-        const chats = await Model.find(filter).populate('user');
+        const chats = await Model.find(filter)
+            .populate('users')
+            .populate('messages');
         return chats;
     } catch (err) {
         console.error(err)
