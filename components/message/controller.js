@@ -1,6 +1,6 @@
 const store = require('./store');
 
-async function addMessage(user, chat, message) {
+async function addMessage(user, chat, message, file) {
     try {
 
         if (!user || !message || !chat) {
@@ -10,7 +10,11 @@ async function addMessage(user, chat, message) {
             user: user,
             chat: chat,
             message: message,
+            file: '',
             date: new Date(),
+        }
+        if (file) {
+            fullMessage.file = `http://localhost:3000/app/files/${file.filename}`;
         }
         await store.add(fullMessage);
         return fullMessage;

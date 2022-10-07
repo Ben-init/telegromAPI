@@ -10,6 +10,7 @@ const messageSchema = new Schema({
         ref: 'chat'
     },
     message: String,
+    file: String,
     date: Date,
     modified: Date,
 });
