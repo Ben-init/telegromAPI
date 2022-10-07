@@ -1,18 +1,22 @@
 const store = require('./store');
 
-async function addMessage(user, message) {
+async function addMessage(user, chat, message) {
+    try {
 
-    if (!user || !message) {
-        throw new Error('[message controller] no user or message');
+        if (!user || !message || !chat) {
+            throw new Error('[Controller] no user or message');
+        }
+        const fullMessage = {
+            user: user,
+            chat: chat,
+            message: message,
+            date: new Date(),
+        }
+        await store.add(fullMessage);
+        return fullMessage;
+    } catch (error) {
+        console.error(error);
     }
-    const fullMessage = {
-        user: user,
-        message: message,
-        date: new Date(),
-    }
-    await store.add(fullMessage);
-
-    return fullMessage;
 }
 
 async function getMessage(id) {
@@ -48,9 +52,8 @@ async function updateMessage(id, text) {
 
 async function deleteMessage(id) {
     try {
-
-        const messageIsTrue = await store.exists(id);
-        if (!id || !messageIsTrue) {
+        const message = await store.exists(id);
+        if (!id || !message) {
             throw new Error('[Controller] invalid or missing params')
         }
         const deletedMessage = await store.remove(id);
