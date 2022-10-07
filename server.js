@@ -11,6 +11,8 @@ app.use(express.json());
 
 Routes(app);
 
+app.use('/app', express.static('./public'));
+
 app.listen(port);
 
 console.log('port:', port);
