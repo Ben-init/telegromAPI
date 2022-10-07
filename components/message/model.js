@@ -5,6 +5,10 @@ const messageSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'user'
     },
+    chat: {
+        type: Schema.Types.ObjectId,
+        ref: 'chat'
+    },
     message: String,
     date: Date,
     modified: Date,
