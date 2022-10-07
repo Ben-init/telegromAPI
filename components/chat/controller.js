@@ -3,9 +3,9 @@ const store = require('./store');
 async function addChat(users, messages) {
 
     if (!Array.isArray(users) && !Array.isArray(messages)) {
-        throw new Error('[chat controller] no users or messages');
+        throw new Error('[Controller] no users or messages');
     } else if (users.length < 1 ) {
-        throw new Error('[chat controller] requires 2 or more users');
+        throw new Error('[Controller] requires 2 or more users');
     }
     const fullChat = {
         users: users,
@@ -39,7 +39,7 @@ async function deleteChat(id) {
     try {
         const chat = await store.exists(id);
         if (!id || !chat) {
-            throw new Error('[chat controller] invalid or missing params');
+            throw new Error('[Controller] invalid or missing params');
         }
         const deletedChat = await store.remove(id);
         return deletedChat;
