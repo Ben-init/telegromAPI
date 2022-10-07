@@ -27,8 +27,8 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try { 
-        const { user, message } = req.body
-        const newMessage = await controller.addMessage(user, message);
+        const { user, chat, message } = req.body
+        const newMessage = await controller.addMessage(user, chat, message);
         response.success(req, res, newMessage, 201);
     } catch (error) {
         response.error(req, res, error);
