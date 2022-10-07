@@ -11,8 +11,13 @@ async function addMessage(message) {
 }
 
 async function allMessage(filter) {
-    const messages = await Model.find(filter);
-    return messages;
+    try {
+
+        const messages = await Model.find(filter).populate('user');
+        return messages;
+    } catch (err) {
+        console.error(err)
+    }
 }
 
 async function updateMessage(message) {
