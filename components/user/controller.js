@@ -48,9 +48,8 @@ async function updateUser(id, description) {
 
 async function deleteUser(id) {
     try {
-
-        const userIsTrue = await store.exists(id);
-        if (!id || !userIsTrue) {
+        const user = await store.exists(id);
+        if (!id || !user) {
             throw new Error('[Controller] invalid or missing params')
         }
         const deletedUser = await store.remove(id);

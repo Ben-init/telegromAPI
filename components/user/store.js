@@ -22,17 +22,26 @@ async function updateUser(User) {
 }
 
 async function deleteUser(id) {
-    const deletedUser = await Model.deleteOne({
-        _id: id,
-    });
-    return deletedUser;
+    try {
+        await Model.findByIdAndDelete(id);
+        return { 
+            id: id ,
+            message: 'User deleted'
+        };
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 async function existsUser(id) {
-    const exists = await Model.exists({
-        _id: id,
-    });
-    return exists;
+    try {
+        const exists = await Model.exists({
+            _id: id,
+        });
+        return exists;
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 module.exports = {
