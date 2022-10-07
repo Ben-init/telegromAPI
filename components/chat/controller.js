@@ -2,9 +2,11 @@ const store = require('./store');
 
 async function addChat(users, messages) {
 
+    console.log(users.length > 1 )
     if (!Array.isArray(users) && !Array.isArray(messages)) {
         throw new Error('[chat controller] no users or messages');
-    } else if (users.length >= 2 ) {
+    } 
+    if (users.length < 1 ) {
         throw new Error('[chat controller] requires 2 or more users');
     }
 

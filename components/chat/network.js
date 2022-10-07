@@ -27,7 +27,7 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try { 
-        const { users, message } = req.body
+        const { users, messages } = req.body
         const newChat = await controller.addChat(users, messages);
         response.success(req, res, newChat, 201);
     } catch (error) {
