@@ -4,8 +4,7 @@ async function addChat(users, messages) {
 
     if (!Array.isArray(users) && !Array.isArray(messages)) {
         throw new Error('[chat controller] no users or messages');
-    } 
-    if (users.length < 1 ) {
+    } else if (users.length < 1 ) {
         throw new Error('[chat controller] requires 2 or more users');
     }
     const fullChat = {
