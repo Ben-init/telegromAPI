@@ -5,11 +5,10 @@ const success = (req, res, message, status) => {
     });
 }
 
-const error = (req, res, message, details, status) => {
+const error = (req, res, message, status) => {
 
     res.status(status || 500).send({
         error: message.message,
-        details: details || 'UnexpectedError',
         body : message.stack,
         
     });
