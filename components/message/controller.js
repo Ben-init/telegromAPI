@@ -1,4 +1,5 @@
 const store = require('./store');
+const { config } = require('./config');
 
 async function addMessage(user, chat, message, file) {
     try {
@@ -14,7 +15,7 @@ async function addMessage(user, chat, message, file) {
             date: new Date(),
         }
         if (file) {
-            fullMessage.file = `http://localhost:3000/app/files/${file.filename}`;
+            fullMessage.file = `${config.host}:${config.port}/app/files/${file.filename}`;
         }
         await store.add(fullMessage);
         return fullMessage;
