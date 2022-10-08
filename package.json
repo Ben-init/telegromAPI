@@ -1,6 +1,6 @@
 {
   "name": "backend",
-  "version": "0.8.2",
+  "version": "1.0.0",
   "description": "telegram chat",
   "main": "server.js",
   "scripts": {
